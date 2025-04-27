@@ -127,19 +127,63 @@ function makeMove(row, col) {
 }
 
 // makeMove(0, 0); // X's turn
-// makeMove(4, 1); // O's turn
+// makeMove(1, 1); // O's turn
 // makeMove(0, 1); // X's turn
 // makeMove(2, 1); // O's turn
 // makeMove(0, 2); // X's turn (X wins)
 
-let val = [1,2,3,4,5,6,7], k=5
+let val = [1, 2, 3, 4, 5, 6, 7],
+  k = 5;
 
-function rotation(val,k){
-    let valLenght = val.length;
-    let remain = valLenght - k;
-    return [...val.slice(remain),...val.slice(0,remain)];
+function rotation(val, k) {
+  let valLenght = val.length;
+  let remain = valLenght - k;
+  return [...val.slice(remain), ...val.slice(0, remain)];
 }
 
 // console.log(rotation(val,k));
 
+// let arr = [2,5,3,3,5,67,2,5,8,2];
 
+// ((arr)=>{
+//    let result = [];
+//    for(let i = 0; i < arr.length; i++){
+//     if(!result.includes(arr[i])){
+//       result.push(arr[i]);
+//     }
+//    }
+//    console.log(result);
+// })(arr)
+
+let arr = [1, 2, 5, 3, 20, 8];
+
+function findMissingNumbers(arr) {
+  let maxVal = Math.max(...arr);
+  let result = [];
+  for (let i = 1; i <= maxVal; i++) {
+    if (!arr.includes(i)) {
+      result.push(i);
+    }
+  }
+  return result;
+}
+
+// console.log(findMissingNumbers(arr));
+
+function linearSearch(arr) {
+  let swapped;
+  do {
+    swapped = false;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] > arr[i + 1]) {
+        let temp = arr[i];
+        arr[i] = arr[i + 1];
+        arr[i + 1] = temp;
+        swapped = true;
+      }
+    }
+    return arr;
+  } while (swapped);
+}
+
+// console.log(linearSearch(arr));
