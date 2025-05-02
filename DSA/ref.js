@@ -127,11 +127,11 @@ function makeMove(row, col) {
   }
 }
 
-// makeMove(0, 0); // X's turn
-// makeMove(1, 1); // O's turn
-// makeMove(0, 1); // X's turn
-// makeMove(2, 1); // O's turn
-// makeMove(0, 2); // X's turn (X wins)
+makeMove(0, 0); // X's turn
+makeMove(1, 1); // O's turn
+makeMove(0, 1); // X's turn
+makeMove(2, 1); // O's turn
+makeMove(0, 2); // X's turn (X wins)
 
 let val = [1, 2, 3, 4, 5, 6, 7],
   k = 5;
