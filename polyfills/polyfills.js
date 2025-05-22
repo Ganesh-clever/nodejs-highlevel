@@ -1,5 +1,41 @@
 const arr = ["apple", "orange", "grape", "mongo", "apple"];
-const num = [1, 3,[121,232,545,454,[454,23432,565,676,78,[343433,43454,676,78,898,89],34,34,46,67,9,89],121,343,45,45,45,], 5, 7, 98, 9, 9, 0, 7, 4];
+const num = [
+  1,
+  3,
+  [
+    121,
+    232,
+    545,
+    454,
+    [
+      454,
+      23432,
+      565,
+      676,
+      78,
+      [343433, 43454, 676, 78, 898, 89],
+      34,
+      34,
+      46,
+      67,
+      9,
+      89,
+    ],
+    121,
+    343,
+    45,
+    45,
+    45,
+  ],
+  5,
+  7,
+  98,
+  9,
+  9,
+  0,
+  7,
+  4,
+];
 // Filter polyfills
 
 function filterHandler(data, i, array) {
@@ -18,7 +54,7 @@ function myFilterHandler(cb, context) {
 
 Array.prototype.myFilter = myFilterHandler;
 
-console.log(arr.myFilter(filterHandler));
+// console.log(arr.myFilter(filterHandler));
 
 // Map polyfills
 
@@ -38,7 +74,7 @@ function myMapHandler(cb, context) {
 
 Array.prototype.myMap = myMapHandler;
 
-console.log(num.myMap(mapHandler));
+// console.log(num.myMap(mapHandler));
 
 // Flatten array
 
@@ -54,11 +90,35 @@ function myFlatHandler(depth = 1) {
       }
     }
   }
-  recursion(this,depth);
+  recursion(this, depth);
   return result;
 }
 
 Array.prototype.myFlat = myFlatHandler;
 
-console.log(num.myFlat(4));
+// console.log(num.myFlat(4));
 
+function sliceHandler(start, end) {
+  let result = [];
+  let length = this.length;
+
+  let from = start < 0 ? Math.max(length + start, 0) : Math.min(start, length);
+  let to =
+    end === undefined
+      ? length
+      : end < 0
+      ? Math.max(length + end, 0)
+      : Math.min(end, length);
+
+  for( let i = from ; i < to ; i++ ){
+    result.push(this[i]);
+  }
+
+  return result
+}
+
+Array.prototype.mySlice = sliceHandler;
+
+export {
+  sliceHandler
+}
