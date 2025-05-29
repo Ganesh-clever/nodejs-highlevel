@@ -205,7 +205,7 @@ function missingN(arr) {
 
 // console.log(missingN(missingNumber));
 
-const subsequence = [100, 1, 2, 3, 4, 200, 1, 3, 2];
+const subsequence = [97,98,99,100, 1, 2, 3, 4, 200, 1, 3, 2];
 
 function subsequenceVals(arr) {
   if (arr.length === 0) return null;
@@ -371,4 +371,50 @@ function pascalTriangle(num) {
   return triangle;
 }
 
-console.log(pascalTriangle(7));
+// console.log(pascalTriangle(7));
+
+function twoSum(arr, targer){
+   let map = new Map();
+   let result = [];
+
+   for(let i = 0; i < arr.length; i++){
+    let complement = targer - arr[i];
+
+    if(map.has(complement)){
+      // result += complement +arr[i] // number of sum
+
+      result.push([complement,arr[i]]);
+    }else{
+      map.set(arr[i],i);
+    }
+   }
+   return result;
+
+}
+
+// console.log(twoSum([2,6,7,3,5,3,3,5,7,1],8));
+
+function longestAlphabets(str){
+
+  if(str.length === 0) return null;
+
+  let current = str[0];
+  let longest = str[0];
+
+  for(let i = 1; i < str.length; i++){
+    if(str.charCodeAt(i) === str.charCodeAt(i - 1) + 1){
+      current += str[i];
+    }else{
+      current = str[i];
+    }
+
+    if(longest.length < current.length){
+      longest = current;
+    }
+  }
+  return longest;
+}
+
+console.log(longestAlphabets("sdfdgpqrstdffgdf"));
+
+
